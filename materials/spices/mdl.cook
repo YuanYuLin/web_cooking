@@ -1,0 +1,63 @@
+{% import SPICES('html') as HTML %}
+
+{%- macro PAGE(project_name) -%}
+    {% set content=caller()%}
+    {% call HTML.PAGE(project_name) %}
+        {{ content }}
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro HEAD(present_name, project_name) -%}
+    {% set content=caller()%}
+    {% call HTML.HEAD(present_name, project_name) -%}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    {{ content }}
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro BODY() -%}
+    {% set content=caller()%}
+    {% call HTML.BODY() %}
+        <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        {{ content }}
+    </div>
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro LAYOUT_GRID() -%}
+    <div class="mdl-grid">
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro LAYOUT_GRID_ITEM(size) -%}
+    <div class="mdl-cell mdl-cell--{{size}}-col">
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro CARD() -%}
+    <div class="demo-card-image mdl-card mdl-shadow--2dp">
+    {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro LEFT_MENU_BAR(menu_nodes, image_path) -%}
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        {{ caller() }}
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            {% for obj in menu_nodes %}
+                <a class="mdl-navigation__link" href="#!{{obj.arg}}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>{{obj.title}}</a>
+            {% endfor %}
+        </nav>
+    </div>
+{%- endmacro -%}
+
+{%- macro TOP_MENU_BAR(menu_nodes, is_search) -%}
+    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            {{ caller() }}
+        </div>
+    </header>
+{%- endmacro -%}

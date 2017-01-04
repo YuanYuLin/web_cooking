@@ -1,0 +1,3 @@
+{
+"model": "IOPC-Memory", "kernel": "linux-4.1-Memory", "memory": "65536K-Memory"
+}

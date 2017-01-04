@@ -1,0 +1,74 @@
+{% import SPICES('html') as HTML %}
+
+{%- macro PAGE(project_name) -%}
+    {% set content=caller()%}
+    {% call HTML.PAGE(project_name) %}
+        {{ content }}
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro HEAD(present_name, project_name) -%}
+    {% set content=caller()%}
+    {% call HTML.HEAD(present_name, project_name) -%}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    {{ content }}
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro BODY() -%}
+    {% set content=caller()%}
+    {% call HTML.BODY() %}
+        <div layout="row">
+        {{ content }}
+        </div>
+    {% endcall %}
+{%- endmacro -%}
+
+{%- macro LAYOUT_GRID() -%}
+    <div class="mdl-grid">
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro LAYOUT_GRID_ITEM(size) -%}
+    <div class="mdl-cell mdl-cell--{{size}}-col">
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro CARD() -%}
+    <div class="demo-card-image mdl-card mdl-shadow--2dp">
+    {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro LEFT_BLOCK() -%}
+    <div layout="row">
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro RIGHT_BLOCK() -%}
+    <div layout="column" flex>
+        {{ caller() }}
+    </div>
+{%- endmacro -%}
+
+{%- macro LEFT_MENU_BAR(menu_nodes, image_path) -%}
+    <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-left">
+        {{ caller() }}
+    </md-sidenav>
+{%- endmacro -%}
+
+{%- macro TOP_MENU_BAR(menu_nodes, is_search) -%}
+    <md-toolbar>
+        {{ caller() }}
+    </md-toolbar>
+{%- endmacro -%}
+
+{%- macro MAIN_BLOCK() -%}
+    <md-content>
+        {{ caller() }}
+    </md-content>
+{%- endmacro -%}

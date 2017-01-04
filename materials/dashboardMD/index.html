@@ -1,0 +1,32 @@
+{% set LEFT_MENU_BAR_IMAGE = 'images/user.jpg' %}
+
+{% import SPICES('ng_md') as PART %}
+
+{% call PART.PAGE(MENU.name) %}
+
+{% call PART.HEAD(MENU.present, MENU.name) %}
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js"></script>
+{% endcall %} {# end - PART.HEAD() #}
+
+{% call PART.BODY() %}
+
+    {% call PART.LEFT_BLOCK() %}
+        {% call PART.LEFT_MENU_BAR(MENU.menu_nodes, LEFT_MENU_BAR_IMAGE) %}
+        <menu-left-photo></menu-left-photo>
+	<menu-left-items></menu-left-items>
+        {% endcall %}
+    {% endcall %}
+
+    {% call PART.RIGHT_BLOCK() %}
+        {% call PART.TOP_MENU_BAR(MENU.top_menu_nodes) %}
+        <menu-top-items></menu-top-items>
+        {% endcall %}
+
+	{% call PART.MAIN_BLOCK() %}
+	<div ng-view></div>
+	{% endcall %}
+    {% endcall %}
+
+{% endcall %} {# end - PART.BODY() #}
+{% endcall %} {# end - PART.PAGE() #}

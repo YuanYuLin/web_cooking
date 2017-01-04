@@ -1,0 +1,6 @@
+{{ DEBUG(MENU) }}
+{% for obj in MENU['menu_nodes'] %}
+    {{ DEBUG(obj) }}
+    <a href="#!{{obj.arg}}">{{obj.title}}</a>
+{% endfor %}
+

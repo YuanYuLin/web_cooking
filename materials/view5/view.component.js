@@ -1,0 +1,22 @@
+{% import SPICES('angular') as NG %}
+
+{% call NG.JSMAIN('view5', ['libCore']) %}
+
+    libCore.setMsg("menu_top_obj", {"title":"View5", "list":[{"title":"V5-1"},{"title":"V5-2"}]});
+    libCore.doHttpGet('api/system.json', function(is_successed, response){
+        if(is_successed) {
+            self.data_system = response.data;
+	} else {
+            console.log("Failed to get 'api/system.json'");
+	}
+    });
+
+    libCore.doHttpGet('api/memory.json', function(is_successed, response){
+        if(is_successed) {
+            self.data_memory = response.data;
+	} else {
+            console.log("Failed to get 'api/memory.json'");
+	}
+    });
+
+{% endcall %}

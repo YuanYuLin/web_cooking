@@ -1,0 +1,16 @@
+<header class="demo-drawer-header">
+    <img src="{{NG.bind('image_path')}}" class="demo-avatar">
+    <div class="demo-avatar-dropdown">
+	    <span>{{NG.bind('user_status')}}</span>
+    <div class="mdl-layout-spacer"></div>
+    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">arrow_drop_down</i>
+        <span class="visuallyhidden">Accounts</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+{% for obj in top_menu_nodes %}
+<li class="mdl-menu__item" {{obj.event_controller}} {{obj.event_callback}}>{{obj.title}}</li>
+{% endfor %}
+    </ul>
+    </div>
+</header>

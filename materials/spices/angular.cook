@@ -1,0 +1,76 @@
+{# BEGIN - bind
+   *******************************************
+   * 'bind' will convert to angularJS data binding
+   *   {{$ctrl.XXX}}
+   ******************************************* #}
+{%- macro bind(name, scope='$ctrl') -%}
+        {{'{{'}}{{scope}}{{'.'}}{{name}}{{'}}'}}
+{%- endmacro -%}
+{# END - bind #}
+
+{# BEGIN - repeat
+ #}
+{%- macro repeat(item, list, scope='$ctrl') -%}
+    {{'ng-repeat="'}}{{item}}{{' in '}}{{scope}}{{'.'}}{{list}}{{'"'}}
+{%- endmacro -%}
+{# END - repeat #}
+
+{# BEGIN - JSMAIN 
+   *******************************************
+   * main function of Module component 
+   ******************************************* #}
+{%- macro JSMAIN(cName, includes) -%}
+'use strict';
+
+angular.module('{{cName}}', []).component('{{cName}}', {
+    templateUrl: '{{cName}}.html',
+    controller: [
+{% for inc in includes %}
+    '{{inc}}',
+{% endfor %}
+        function {{cName}}Controller(
+{% for inc in includes %} {% if loop.last %}
+    {{inc}}
+{% else %}
+    {{inc}},
+{% endif %}{% endfor %}
+                ) {
+        var self = this;
+{{ caller() }}
+    }]
+});
+{%- endmacro -%}
+{# END - JSMAIN #}
+
+{%- macro JSCONTROLLER(moduleName, controllerName, includes) -%}
+angular.module('{{moduleName}}').controller('{{controllerName}}', [
+{% for inc in includes %}
+    '{{inc}}',
+{% endfor %}
+function(
+{% for inc in includes %} {% if loop.last %}
+    {{inc}}
+{% else %}
+    {{inc}},
+{% endif %}{% endfor %}
+) {
+    {{ caller() }}
+}]);
+{%- endmacro -%}
+
+
+{%- macro JSLIB(moduleName, libName, includes) -%}
+angular.module('{{moduleName}}').factory('{{libName}}', [
+{% for inc in includes %}
+    '{{inc}}',
+{% endfor %}
+function(
+{% for inc in includes %} {% if loop.last %}
+    {{inc}}
+{% else %}
+    {{inc}},
+{% endif %}{% endfor %}
+) {
+    {{ caller() }}
+}]);
+{%- endmacro -%}

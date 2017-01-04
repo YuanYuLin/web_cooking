@@ -1,0 +1,31 @@
+{% import SPICES('mdl') as PART %}
+
+{% call PART.PAGE(MENU.name) %}
+
+{% call PART.HEAD(MENU.present, MENU.name) %}
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js"></script>
+{% endcall %} {# end - PART.HEAD() #}
+
+{% call PART.BODY() %}
+
+    {% call PART.LEFT_BLOCK() %}
+        {% call PART.LEFT_MENU_BAR(MENU.menu_nodes, 'images/user.jpg') %}
+        <menu-left-photo></menu-left-photo>
+        {% endcall %}
+    {% endcall %}
+
+    {% call PART.RIGHT_BLOCK() %}
+        {% call PART.TOP_MENU_BAR(MENU.top_menu_nodes) %}
+        <menu-top-items></menu-top-items>
+        {% endcall %}
+
+	{% call PART.MAIN_BLOCK() %}
+	<main class="mdl-layout__content mdl-color--grey-100">
+	<div ng-view></div>
+	</main>
+	{% endcall %}
+    {% endcall %}
+
+{% endcall %} {# end - PART.BODY() #}
+{% endcall %} {# end - PART.PAGE() #}

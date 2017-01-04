@@ -1,0 +1,13 @@
+{{ name }}
+{{ version }}
+
+{% for node in menu_nodes %}
+{{ node.name }} + {{ node.title }} + {{ node.arg }}
+{% endfor %}
+
+template 2:
+{% for node in menu_nodes %}
+  {% if node.index %}
+  {{ node.name }} + {{ node.title }} + {{ node.arg }}
+  {% endif %}
+{% endfor %}

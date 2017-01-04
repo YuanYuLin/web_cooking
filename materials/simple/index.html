@@ -1,0 +1,19 @@
+{% import SPICES('html') as HTML %}
+
+{% call HTML.PAGE(MENU.name) %}
+
+{% call HTML.HEAD(MENU.present, MENU.name) %}
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js"></script>
+{% endcall %} {# end - HTML.HEAD() #}
+
+{% call HTML.BODY() %}
+
+    {% call HTML.TOP_MENU_BAR(MENU.menu_nodes) %}
+    {% endcall %}
+
+
+    <div ng-view></div>
+
+{% endcall %} {# end - HTML.BODY() #}
+{% endcall %} {# end - HTML.PAGE() #}

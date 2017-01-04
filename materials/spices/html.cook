@@ -1,0 +1,33 @@
+
+{%- macro PAGE(project_name) -%}
+<!doctype html>
+<html lang="en" ng-app="{{project_name}}" class="no-js">
+    {{ caller() }}
+</html>
+{%- endmacro -%}
+
+{%- macro HEAD(present_name, project_name) -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{present_name}}-{{project_name}}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ caller() }}
+</head>
+{%- endmacro -%}
+
+{%- macro BODY() -%}
+<body>
+  {{ caller() }}
+</body>
+{%- endmacro -%}
+
+{%- macro TOP_MENU_BAR(menu_nodes) -%}
+{{ caller() }}
+  <ul class="menu">
+  {% for obj in menu_nodes %}
+    <li><a href="#!{{obj.arg}}">{{obj.title}}</a></li>
+  {% endfor %}
+  </ul>
+{%- endmacro -%}

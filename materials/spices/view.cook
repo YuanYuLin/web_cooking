@@ -1,0 +1,18 @@
+{%- macro GET_TEMPLATE_HTML(pkg_name, present) -%}
+
+    {% import SPICES('angular') as NG %}
+    {% import SPICES('html') as HTML %}
+    {% import SPICES('mdl') as MDL %}
+
+    {% if present == 'simple' %}
+        {% include pkg_name + OSSEP + 'view.simple.html' %}
+    {% elif present == 'dashboardMDL' %}
+        {% include pkg_name + OSSEP + 'view.dashboardMDL.html' %}
+    {% elif present == 'dashboardMD' %}
+        {% include pkg_name + OSSEP + 'view.dashboardMD.html' %}
+    {% else %}
+        {{ BUGON("view.cook", pkg_name + ', ' + present) }}
+    {% endif %}
+
+    {{ caller() }}
+{%- endmacro -%}

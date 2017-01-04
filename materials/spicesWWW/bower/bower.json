@@ -1,0 +1,15 @@
+{
+    "name":"{{MENU.name}}",
+    "description":"{{MENU.name}} project.",
+    "version":"1.0.0",
+    "homepage":"",
+    "license":"MIT",
+    "private":true,
+    "dependencies": {
+    {% for bower in FOOD_BOWER_DEPS %} {% if loop.last %}
+        "{{ bower.name }}":"{{ bower.version }}"
+    {% else %}
+        "{{ bower.name }}":"{{ bower.version }}",
+    {% endif %} {% endfor %}
+    }
+}

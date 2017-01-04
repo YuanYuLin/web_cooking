@@ -1,0 +1,32 @@
+for Windows user
+1. install python 2.7
+2. install jinja2
+    open "cmd" , pip install jinja2
+3. modify LINE 27 of "<Python27>\Lib\site-packages\jinja2\loaders.py"
+  from
+    for piece in template.split('/'):
+  to
+    for piece in template.split(os.sep):
+4. install git
+5. entering "web_cooking" folder
+  cd <web_cooking>
+6. generate AngularJs App
+  Cook\cook.py materials food\simple menu\commonSimple.menu ALL
+7. run on http-server
+  Cook\cook.py materials food\simple menu\commonSimple.menu RUN
+
+for Ubuntu/Debian user
+1. install python 2.7
+  apt-get install python2.7
+2. install jinja2
+  apt-get install python-jinja2
+3. install nodejs
+  apt-get install nodejs  
+4. install git
+  apt-get install git
+5. entering "web_cooking" folder
+  cd <web_cooking>
+6. generate AngularJs App
+  Cook/cook.py materials food/simple menu/commonSimple.menu ALL
+7. run on http-server
+  Cook/cook.py materials food/simple menu/commonSimple.menu RUN
