@@ -1,12 +1,12 @@
-import cook_packages
+import cook_packages as CP
 
-class Package(cook_packages.Angular4Package):
+class Package(CP.Angular4Package):
   _properties = {
-    "imports":[
+    "NG4_IMPORTS":[
       {"BrowserModule":"@angular/platform-browser"},
       {"NgModule":"@angular/core"}
     ],
-    "pkg_deps":[
+    "COOK_DEPS":[
     ]
   }
 

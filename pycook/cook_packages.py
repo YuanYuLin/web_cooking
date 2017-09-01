@@ -16,13 +16,15 @@ class Package(object):
 #
 #
 class Angular4Package(Package):
-  _properties = {"imports":[], "pkg_deps":[]}
+  NG_IMPORTS="ng_imports"
+  COOK_DEPS="cook_deps"
+  _properties = {"NG4_IMPORTS":[], "COOK_DEPS":[]}
 
-  def get_imports(self):
-    return self._properties["imports"]
+  def get_ng4_imports(self):
+    return self._properties["NG4_IMPORTS"]
 
-  def get_pkg_deps(self):
-    return self._properties["pkg_deps"]
+  def get_cook_deps(self):
+    return self._properties["COOK_DEPS"]
 
 #
 # Used to load package
@@ -37,6 +39,9 @@ class Loader(object):
   def __init__(self, args):
     self._args = args
 
+  def do_deps(self, dep_list):
+    print dep_list
+
   def launch_pkg(self, pkg_name):
     pkg_found = False
     for pkg in self._pkgs:
@@ -45,13 +50,14 @@ class Loader(object):
         break
 
     if pkg_found:
+      print ""
     else:
       module_path = ops.path_join(self.get_materials(), pkg_name)
       launch_script = "pkg"
       py_script = ops.loadModule(pkg_name, launch_script, [module_path])
       pkg_obj = py_script.main(self._args)
 
-      pprint.pprint(pkg_obj.get_pkg_deps())
+      pprint.pprint(pkg_obj.get_cook_deps())
 
   def run(self):
     self.debug()
