@@ -1,0 +1,12 @@
+<%
+ng4_imports = root_obj['NG4_IMPORTS']
+for ng_obj in ng4_imports:
+  for key in ng_obj.keys():
+    val = ng_obj[key] 
+%>
+import { {{key}} } from '{{val}}';
+<%
+  end
+end
+%>
+

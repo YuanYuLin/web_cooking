@@ -1,0 +1,9 @@
+{
+"version":"1.0.0",
+"name":"common",
+"packages":[
+    {"enabled":1, "name":"layout_default"},
+    {"enabled":1, "name":"page_dashboard"},
+    {"enabled":0, "name":""}
+]
+}

@@ -1,0 +1,8 @@
+{
+"version":"1.0.0",
+"name":"voxel",
+"build_components":[
+    {"name":"voxelJsHelloWorld"},
+    {"name":"spicesVoxelJS"}
+]
+}

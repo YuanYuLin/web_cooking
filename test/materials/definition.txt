@@ -1,0 +1,4 @@
+{
+"pkg_name":string
+"dependency":array
+}

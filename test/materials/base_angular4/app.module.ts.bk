@@ -1,0 +1,22 @@
+{{ root_obj }}
+<%
+ng4_imports = root_obj['NG4_IMPORTS']
+for item in ng4_imports
+%>
+import \{ {{item.component}} \} from '{{item.path}}';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+<%
+for item in import_list:
+  {{item}} ,
+%>
+    BrowserModule
+  ],
+  providers: [],
+ `   bootstrap: [AppComponent]
+  })
+  export class AppModule { }
