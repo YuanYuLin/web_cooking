@@ -59,6 +59,8 @@ def MAIN_EXTRACT(args):
     #ops.copyto(ops.path_join(pkg_path, "pycook"), output_dir)
     #ops.unTarXz(tarball_pkg, output_dir)
     ops.copyto(src_materials_dir, output_dir)
+    ops.unTarXz(ops.path_join(pkg_path, "base_ng42.tar.xz"), dst_materials_dir)
+    ops.unTarXz(ops.path_join(pkg_path, "base_ng50.tar.xz"), dst_materials_dir)
 
     return True
 
